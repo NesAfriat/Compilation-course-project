@@ -1,0 +1,33 @@
+(define list (lambda x x))
+
+(define list? 
+  (let ((null? null?)
+	(pair? pair?)
+	(cdr cdr))
+    (letrec ((list?-loop
+	      (lambda (x)
+		(or (null? x)
+		    (and (pair? x)
+			 (list?-loop (cdr x)))))))
+      list?-loop)))
+
+(define zero? 
+  (let ((= =))
+    (lambda (x) (= x 0))))
+
+(define integer?
+  (let ((rational? rational?)
+	(= =)
+	(denominator denominator))
+    (lambda (x)
+      (and (rational? x) (= (denominator x) 1)))))
+
+(define number?
+  (let ((flonum? flonum?)
+	(rational? rational?))
+    (lambda (x)
+      (or (flonum? x) (rational? x)))))
+
+
+(define not
+  (lambda (x) (if x #f #t)))

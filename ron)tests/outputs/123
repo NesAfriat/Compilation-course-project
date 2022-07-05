@@ -1,0 +1,1 @@
+(list (quote sym) "str" #\c 1)

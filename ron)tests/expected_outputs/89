@@ -1,0 +1,1 @@
+(mul 3 (mul 2 (mul 1 "end")))
